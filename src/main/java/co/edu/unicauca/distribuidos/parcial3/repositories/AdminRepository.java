@@ -5,7 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import co.edu.unicauca.distribuidos.parcial3.models.AdminEntity;;
+import co.edu.unicauca.distribuidos.parcial3.models.AdminEntity;
+import co.edu.unicauca.distribuidos.parcial3.services.DTO.DatosLoginDTO;;
 
 @Repository
 public class AdminRepository {
@@ -29,6 +30,21 @@ public class AdminRepository {
             if (admin.getLogin().equals(login)) {
                 objAdmin = admin;
                 break;
+            }
+        }
+
+        return objAdmin;
+    }
+    public AdminEntity findByLoginPassword(DatosLoginDTO loginPassword ) {
+        System.out.println("Invocando a consultar un admin");
+        AdminEntity objAdmin = null;
+
+        for (AdminEntity admin : listaDeAdmin) {
+            if (admin.getLogin().equals(loginPassword.getLogin())) {
+                if (admin.getPassword().equals(loginPassword.getPassword())) {
+                    objAdmin = admin;
+                    break;
+                }
             }
         }
 
@@ -76,9 +92,9 @@ public class AdminRepository {
     }
 
     private void cargarClientes() {
-        AdminEntity objAdmin1 = new AdminEntity("Janeth", "Cifuentes", "cjaneth", "12345");
+        AdminEntity objAdmin1 = new AdminEntity("Janeth", "Cifuentes", "cjaneth", "123");
         this.listaDeAdmin.add(objAdmin1);
-        AdminEntity objAdmin2 = new AdminEntity("Jose", "Narvaez", "jgnarvaez", "67890");
+        AdminEntity objAdmin2 = new AdminEntity("Jose", "Narvaez", "jgnarvaez", "123");
         this.listaDeAdmin.add(objAdmin2);
     }
 }

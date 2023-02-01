@@ -13,13 +13,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.distribuidos.parcial3.services.IAdminService;
+import co.edu.unicauca.distribuidos.parcial3.services.IClienteService;
 import co.edu.unicauca.distribuidos.parcial3.services.DTO.AdminDTO;
+import co.edu.unicauca.distribuidos.parcial3.services.DTO.ClienteDTO;
+import co.edu.unicauca.distribuidos.parcial3.services.DTO.DatosLoginDTO;
 
 @RestController
 @RequestMapping("/api")
 public class AdminRestController {
     @Autowired
     private IAdminService adminService;
+    @Autowired
+    private IClienteService clienteService;
+
+    @GetMapping("/login")
+    public Object index(@RequestBody DatosLoginDTO log) {
+         Object objAdminClient = null; //crea un objeto de tipo object por que no se conoce si sera adminstrador o cliente       
+        
+        objAdminClient = adminService.findByLoginPassword(log);// busca entre los administradores si no la encuentra es nulo
+        if (objAdminClient== null){
+            objAdminClient = clienteService.findByLoginPassword(log);// busca entre los clientes si no la encuentra es nulo
+        }
+        if(objAdminClient!=null){
+            AdminDTO prue =new AdminDTO();
+            ClienteDTO prue2=new ClienteDTO();
+            System.out.println("es Administrador?"+  prue.getClass().equals(objAdminClient.getClass()));
+            System.out.println("es cliente?"+  prue2.getClass().equals(objAdminClient.getClass()));
+            
+        }
+        
+        return objAdminClient;
+    }
 
     @GetMapping("/admin")
     public List<AdminDTO> index() {

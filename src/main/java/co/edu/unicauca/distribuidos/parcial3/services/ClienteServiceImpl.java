@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import co.edu.unicauca.distribuidos.parcial3.models.ClienteEntity;
 import co.edu.unicauca.distribuidos.parcial3.repositories.ClienteRepository;
 import co.edu.unicauca.distribuidos.parcial3.services.DTO.ClienteDTO;
+import co.edu.unicauca.distribuidos.parcial3.services.DTO.DatosLoginDTO;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
@@ -31,10 +32,21 @@ public class ClienteServiceImpl implements IClienteService {
     @Override
     public ClienteDTO findByLogin(String login) {
         ClienteEntity objClienteEntity = this.servicioAccesoBaseDatos.findByLogin(login);
+        if (objClienteEntity==null){
+            return null;
+        }
         ClienteDTO clienteDTO = this.modelMapper.map(objClienteEntity, ClienteDTO.class);
         return clienteDTO;
     }
-
+    @Override
+    public ClienteDTO findByLoginPassword (DatosLoginDTO loginPassword){
+        ClienteEntity objClienteEntity = this.servicioAccesoBaseDatos.findByLoginPassword(loginPassword);
+        if (objClienteEntity==null){
+            return null;
+        }
+        ClienteDTO clienteDTO = this.modelMapper.map(objClienteEntity, ClienteDTO.class);
+        return clienteDTO;
+    }
     @Override
     public ClienteDTO save(ClienteDTO cliente) {
         ClienteEntity clienteEntity = this.modelMapper.map(cliente, ClienteEntity.class);

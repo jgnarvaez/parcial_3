@@ -5,7 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import co.edu.unicauca.distribuidos.parcial3.models.ClienteEntity;;
+import co.edu.unicauca.distribuidos.parcial3.models.ClienteEntity;
+import co.edu.unicauca.distribuidos.parcial3.services.DTO.DatosLoginDTO;
 
 @Repository
 public class ClienteRepository {
@@ -21,7 +22,7 @@ public class ClienteRepository {
         return this.listaDeClientes;
     }
 
-    public ClienteEntity findByLogin(String login) {
+    public ClienteEntity findByLogin (String login) {
         System.out.println("Invocando a consultar un clientes");
         ClienteEntity objAdmin = null;
 
@@ -34,7 +35,21 @@ public class ClienteRepository {
 
         return objAdmin;
     }
+    public ClienteEntity findByLoginPassword(DatosLoginDTO loginPassword) {
+        System.out.println("Invocando a consultar un clientes");
+        ClienteEntity objAdmin = null;
 
+        for (ClienteEntity cliente : listaDeClientes) {
+            if (cliente.getLogin().equals(loginPassword.getLogin())) {
+                if (cliente.getPassword().equals(loginPassword.getPassword())) {
+                    objAdmin = cliente;
+                    break;
+                }
+            }
+        }
+
+        return objAdmin;
+    }
     public ClienteEntity save(ClienteEntity cliente) {
         System.out.println("Invocando a almacenar cliente");
         ClienteEntity objCliente = null;
@@ -76,9 +91,9 @@ public class ClienteRepository {
     }
 
     private void cargarClientes() {
-        ClienteEntity objAdmin1 = new ClienteEntity("Janeth", "Cifuentes","email1","1234567", "cjaneth", "12345");
+        ClienteEntity objAdmin1 = new ClienteEntity("Janeth", "Cifuentes","email1","1234567", "cjaneth2", "12345");
         this.listaDeClientes.add(objAdmin1);
-        ClienteEntity objAdmin2 = new ClienteEntity("Jose", "Narvaez","email2","1111222333", "jgnarvaez", "67890");
+        ClienteEntity objAdmin2 = new ClienteEntity("Jose", "Narvaez","email2","1111222333", "jgnarvaez2", "12345");
         this.listaDeClientes.add(objAdmin2);
     }
 }
