@@ -49,6 +49,10 @@ public class AdminRestController {
     public List<AdminDTO> index() {
         return adminService.findAll();
     }
+    @GetMapping("/cliente")
+    public List<ClienteDTO> index2() {
+        return clienteService.findAll();
+    }
 
     @GetMapping("/admin/{login}")
     public AdminDTO show(@PathVariable String login) {
@@ -63,7 +67,12 @@ public class AdminRestController {
         objAdmin = adminService.save(admin);
         return objAdmin;
     }
-
+    @PostMapping("/cliente")
+    public ClienteDTO create(@RequestBody ClienteDTO cliente) {
+        ClienteDTO objCliente = null;
+        objCliente = clienteService.save(cliente);
+        return objCliente;
+    }
     @PutMapping("/admin/{login}")
     public AdminDTO update(@RequestBody AdminDTO admin, @PathVariable String login) {
         AdminDTO objAdmin = null;
