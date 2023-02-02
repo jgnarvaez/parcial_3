@@ -86,4 +86,14 @@ public class ProductoServiceImpl implements IProductoService {
         return this.servicioAccesoBaseDatos.cerrarSubastaProducto(codigo);
     }
 
+    @Override
+    public boolean nuevaOfertaProducto(String codigo, Integer oferta) {        
+        return  this.servicioAccesoBaseDatos.NuevaOferta(codigo, oferta);
+    }
+
+    @Override
+    public Integer consultaOfertaProducto(String codigo) {
+        return this.servicioAccesoBaseDatos.getOferta(codigo);
+    }
+
 }

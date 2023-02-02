@@ -1,5 +1,6 @@
 package co.edu.unicauca.distribuidos.api_rest_subasta_productos.repositories;
 
+import java.util.Hashtable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +12,58 @@ import co.edu.unicauca.distribuidos.api_rest_subasta_productos.models.ProductoEn
 public class ProductoRepository {
     private ArrayList<ProductoEntity> listaDeProductosSubastados;
     private ArrayList<ProductoEntity> listaDeProductosNOSubastados;
+    Hashtable<String, Integer> ofetasProductos = new Hashtable<String, Integer>();
+ 
 
     public ProductoRepository() {
         this.listaDeProductosSubastados = new ArrayList<ProductoEntity>();
         this.listaDeProductosNOSubastados = new ArrayList<ProductoEntity>();
         cargarProductos();
+        
     }
+//////////////////////////////////
+/////Funciones para OFETAS
+//////////////////////////////////
+    public Integer getOferta(String codigo) {
+        System.out.println("Invocando consultar oferta de producto ");
+        if (ofetasProductos.containsKey(codigo)){
+            System.out.println("si hay oferta ");
+            return ofetasProductos.get(codigo);
+        }
+        System.out.println("no hay oferta ");
+        return 0;
+    }
+    public boolean NuevaOferta(String codigo,Integer oferta) {
+        System.out.println("Invocando a dar oferta de producto ");
+        boolean bandera=false;
+        if(this.findByCodigoSubastados(codigo)!=null){//< busca el codigo en los productos subastados
+            return this.modificarOferta(codigo, oferta);
+        }
+        System.out.println("producto no ofrecido en la subasta");
+        return bandera;
+    }
+    private boolean modificarOferta(String codigo,Integer oferta) {
+        boolean bandera=false;
+        if (ofetasProductos.containsKey(codigo)){
+            System.out.println("el prodcto ya posee oferta(s)");
+            if(oferta>ofetasProductos.get(codigo)){
+                System.out.println("Se ha creado la oferta");
+                ofetasProductos.put(codigo, oferta);
+                System.out.println(ofetasProductos.get(codigo));
+                System.out.println(ofetasProductos.containsKey(codigo));
+                bandera=true;
+            }
+        }else{
+            System.out.println("Se ha creado la oferta");
+            ofetasProductos.put(codigo, oferta);
+            //System.out.println(ofetasProductos.get(codigo));
+            //System.out.println(ofetasProductos.containsKey(codigo));
+            bandera=true;
+        }
+        return bandera;
+    }
+
+
 
 //////////////////////////////////
 /////Funciones para cambiar elementos subastados
@@ -75,9 +122,29 @@ public class ProductoRepository {
                 break;
             }
         }
-
         return objProducto;
-}
+    }
+    public ProductoEntity findByCodigoSubastados(String codigo) {
+        System.out.println("Invocando a consultar un producto Subastado");
+        ProductoEntity objProducto = null;
+        for (ProductoEntity producto : listaDeProductosSubastados) {
+            if (producto.getCodigo().equals(codigo)) {
+                objProducto = producto;
+                break;
+            }
+        }
+        return objProducto;
+    }public ProductoEntity findByCodigoNoSubastados(String codigo) {
+        System.out.println("Invocando a consultar un producto NO Subastado");
+        ProductoEntity objProducto = null;
+        for (ProductoEntity producto : listaDeProductosNOSubastados) {
+            if (producto.getCodigo().equals(codigo)) {
+                objProducto = producto;
+                break;
+            }
+        }
+        return objProducto;
+    }
 
 //////////////////////////////////
 /////Funciones para almacenar un  elemento

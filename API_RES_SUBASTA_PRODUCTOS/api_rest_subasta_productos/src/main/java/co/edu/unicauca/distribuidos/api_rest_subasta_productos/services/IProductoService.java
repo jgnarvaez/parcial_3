@@ -21,4 +21,10 @@ public interface IProductoService {
     public boolean abrirSubastaProducto(String codigo);
 
     public boolean cerrarSubastaProducto(String codigo);
+
+    public boolean nuevaOfertaProducto(String codigo,Integer oferta);
+
+    public Integer consultaOfertaProducto(String codigo);
+
+
 }
