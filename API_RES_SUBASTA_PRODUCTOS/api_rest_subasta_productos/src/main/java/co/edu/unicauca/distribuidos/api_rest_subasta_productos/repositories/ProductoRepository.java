@@ -18,6 +18,34 @@ public class ProductoRepository {
         cargarProductos();
     }
 
+//////////////////////////////////
+/////Funciones para cambiar elementos subastados
+//////////////////////////////////
+    public boolean abrirSubastaProducto(String codigo) {
+        System.out.println("Invocando a subastar el producto ");
+        ProductoEntity objProducto = this.findByCodigo(codigo);///< crea un objeto que almacena el elemento temporalmente
+        boolean bandera=false;
+        if(this.deleteNoSubastados(codigo)){///<intentamos elminimar de los no subastados
+            this.saveSubastados(objProducto);
+            bandera=true;///<se ha agregado a elementos subastados
+        }
+        return bandera;
+    }
+    
+    public boolean cerrarSubastaProducto(String codigo) {
+        System.out.println("Invocando a quitar de la subasta el producto ");
+        ProductoEntity objProducto = this.findByCodigo(codigo);///<crea un objeto que almacena el elemento temporalmente
+        boolean bandera=false;
+        if(this.deleteSubatados(codigo)){///<intentamos elminimar de los  subastados
+            this.saveNoSubastados(objProducto);
+            bandera=true;////< se ha agregado a elementos no subastados
+        }
+        return bandera;        
+    }
+
+//////////////////////////////////
+/////Funciones para hallar un  elemento
+//////////////////////////////////
     public List<ProductoEntity> findAll() {
         System.out.println("Invocando a listarproductos");
         ArrayList<ProductoEntity> listaProductos = new ArrayList<ProductoEntity>();
@@ -25,17 +53,14 @@ public class ProductoRepository {
         listaProductos.addAll(listaDeProductosNOSubastados);
         return listaProductos;
     }
-
     public List<ProductoEntity> findSubastados() {
         System.out.println("Invocando a listarsubastados");
         return this.listaDeProductosSubastados;
     }
-
     public List<ProductoEntity> findNOSubastados() {
         System.out.println("Invocando a listarnosubastados");
         return this.listaDeProductosNOSubastados;
     }
-
     public ProductoEntity findByCodigo(String codigo) {
         System.out.println("Invocando a consultar un producto");
         ProductoEntity objProducto = null;
@@ -52,30 +77,49 @@ public class ProductoRepository {
         }
 
         return objProducto;
-    }
+}
 
+//////////////////////////////////
+/////Funciones para almacenar un  elemento
+//////////////////////////////////
     public ProductoEntity save(ProductoEntity producto) {
         System.out.println("Invocando a almacenar producto");
+        return this.saveNoSubastados(producto);
+    }
+    public ProductoEntity saveSubastados(ProductoEntity producto) {
+        System.out.println("Invocando a almacenar producto en Subastados");
         ProductoEntity objProducto = null;
-        if (this.listaDeProductosNOSubastados.add(producto)) {
+        if (this.listaDeProductosSubastados.add(producto)) {
             objProducto = producto;
         }
 
         return objProducto;
     }
+    public ProductoEntity saveNoSubastados(ProductoEntity producto) {
+        System.out.println("Invocando a almacenar producto en No Subastados");
+        ProductoEntity objProducto = null;
+        if (this.listaDeProductosNOSubastados.add(producto)) {
+            objProducto = producto;
+        }
+        return objProducto;
+    }
 
+//////////////////////////////////
+/////Funciones para actualizar un  elemento
+//////////////////////////////////
     public ProductoEntity update(String codigo, ProductoEntity producto) {
         System.out.println("Invocando a actualizar un producto");
         ProductoEntity objProducto = null;
-
-        for (int i = 0; i < this.listaDeProductosNOSubastados.size(); i++) {
-            if (this.listaDeProductosNOSubastados.get(i).getCodigo().equals(codigo)) {
-                this.listaDeProductosNOSubastados.set(i, producto);
-                objProducto = producto;
-                return objProducto;
-            }
+        objProducto=this.updateNoSubastados(codigo, producto);
+        if (objProducto==null){
+            System.out.println("  No se encontro en productos no subastados");
+            objProducto=this.updateSubastados(codigo, producto);
         }
-
+        return objProducto;
+    }
+    public ProductoEntity updateSubastados(String codigo, ProductoEntity producto) {
+        System.out.println("Invocando a actualizar un producto Subastado");
+        ProductoEntity objProducto = null;
         for (int i = 0; i < this.listaDeProductosSubastados.size(); i++) {
             if (this.listaDeProductosSubastados.get(i).getCodigo().equals(codigo)) {
                 this.listaDeProductosSubastados.set(i, producto);
@@ -83,22 +127,38 @@ public class ProductoRepository {
                 break;
             }
         }
-
         return objProducto;
     }
-
-    public boolean delete(String codigo) {
-        System.out.println("Invocando a eliminar un producto");
-        boolean bandera = false;
+    public ProductoEntity updateNoSubastados(String codigo, ProductoEntity producto) {
+        System.out.println("Invocando a actualizar un producto No Subastado");
+        ProductoEntity objProducto = null;
 
         for (int i = 0; i < this.listaDeProductosNOSubastados.size(); i++) {
             if (this.listaDeProductosNOSubastados.get(i).getCodigo().equals(codigo)) {
-                this.listaDeProductosNOSubastados.remove(i);
-                bandera = true;
-                return bandera;
+                this.listaDeProductosNOSubastados.set(i, producto);
+                objProducto = producto;
+                break;
             }
         }
+        return objProducto;
+    }
 
+//////////////////////////////////
+/////Funciones para eliminar un  elemento
+//////////////////////////////////
+    public boolean delete(String codigo) {
+        System.out.println("Invocando a eliminar un producto");
+        boolean bandera = false;
+        bandera=this.deleteNoSubastados(codigo);
+        if(!bandera){
+            System.out.println("  No se encontro en productos no subastados");
+            bandera=this.deleteSubatados(codigo);
+        }
+        return bandera;
+    }
+    public boolean deleteSubatados(String codigo) {
+        System.out.println("Invocando a eliminar un producto Subastado");
+        boolean bandera = false;
         for (int i = 0; i < this.listaDeProductosSubastados.size(); i++) {
             if (this.listaDeProductosSubastados.get(i).getCodigo().equals(codigo)) {
                 this.listaDeProductosSubastados.remove(i);
@@ -106,10 +166,23 @@ public class ProductoRepository {
                 break;
             }
         }
-
+        return bandera;    }
+     public boolean deleteNoSubastados(String codigo) {
+        System.out.println("Invocando a eliminar un producto No Subastado");
+        boolean bandera = false;
+        for (int i = 0; i < this.listaDeProductosNOSubastados.size(); i++) {
+            if (this.listaDeProductosNOSubastados.get(i).getCodigo().equals(codigo)) {
+                this.listaDeProductosNOSubastados.remove(i);
+                bandera = true;
+                break;
+            }
+        }
         return bandera;
     }
 
+//////////////////////////////////
+/////Datos quemados
+//////////////////////////////////
     private void cargarProductos() {
         ProductoEntity objProducto1 = new ProductoEntity("AAA111", "Monalisa", 500000000);
         this.listaDeProductosNOSubastados.add(objProducto1);

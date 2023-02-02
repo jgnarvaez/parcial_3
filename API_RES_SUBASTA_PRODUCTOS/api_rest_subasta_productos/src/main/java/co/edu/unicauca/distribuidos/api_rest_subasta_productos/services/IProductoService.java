@@ -17,4 +17,8 @@ public interface IProductoService {
     public ProductoDTO update(String codigo, ProductoDTO producto);
 
     public boolean delete(String codigo);
+
+    public boolean abrirSubastaProducto(String codigo);
+
+    public boolean cerrarSubastaProducto(String codigo);
 }

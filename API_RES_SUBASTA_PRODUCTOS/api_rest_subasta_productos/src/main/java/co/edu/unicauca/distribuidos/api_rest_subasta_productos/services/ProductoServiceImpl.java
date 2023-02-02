@@ -75,4 +75,15 @@ public class ProductoServiceImpl implements IProductoService {
         return productoDTO;
     }
 
+    @Override
+    public boolean abrirSubastaProducto(String codigo) {
+        return this.servicioAccesoBaseDatos.abrirSubastaProducto(codigo);
+       
+    }
+
+    @Override
+    public boolean cerrarSubastaProducto(String codigo) {
+        return this.servicioAccesoBaseDatos.cerrarSubastaProducto(codigo);
+    }
+
 }

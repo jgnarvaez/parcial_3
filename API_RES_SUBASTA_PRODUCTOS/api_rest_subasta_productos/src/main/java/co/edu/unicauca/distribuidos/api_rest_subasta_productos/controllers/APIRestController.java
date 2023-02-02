@@ -70,4 +70,14 @@ public class APIRestController {
         return bandera;
 
     }
+    
+    @PutMapping("/productoSubastar/{codigo}")
+    public Boolean productoSubastar(@PathVariable String codigo) {
+        return productoService.abrirSubastaProducto(codigo);
+    }
+    
+    @PutMapping("/productoNoSubastar/{codigo}")
+    public Boolean productoNoSubastar(@PathVariable String codigo) {
+        return productoService.cerrarSubastaProducto(codigo);
+    }
 }
