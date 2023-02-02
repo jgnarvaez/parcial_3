@@ -1,15 +1,28 @@
 package co.edu.unicauca.distribuidos.parcial3.controllers;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.distribuidos.parcial3.services.IAdminService;
@@ -18,8 +31,15 @@ import co.edu.unicauca.distribuidos.parcial3.services.DTO.AdminDTO;
 import co.edu.unicauca.distribuidos.parcial3.services.DTO.ClienteDTO;
 import co.edu.unicauca.distribuidos.parcial3.services.DTO.DatosLoginDTO;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+
 @RestController
 @RequestMapping("/api")
+@Validated
 public class AdminRestController {
     @Autowired
     private IAdminService adminService;
@@ -62,19 +82,19 @@ public class AdminRestController {
     }
 
     @PostMapping("/admin")
-    public AdminDTO create(@RequestBody AdminDTO admin) {
+    public AdminDTO create(@Valid @RequestBody AdminDTO admin) {
         AdminDTO objAdmin = null;
         objAdmin = adminService.save(admin);
         return objAdmin;
     }
     @PostMapping("/cliente")
-    public ClienteDTO create(@RequestBody ClienteDTO cliente) {
+    public ClienteDTO create(@Valid @RequestBody ClienteDTO cliente) {
         ClienteDTO objCliente = null;
         objCliente = clienteService.save(cliente);
         return objCliente;
     }
     @PutMapping("/admin/{login}")
-    public AdminDTO update(@RequestBody AdminDTO admin, @PathVariable String login) {
+    public AdminDTO update(@Valid @RequestBody AdminDTO admin, @PathVariable String login) {
         AdminDTO objAdmin = null;
         AdminDTO adminActual = adminService.findByLogin(login);
         if (adminActual != null) {
@@ -93,4 +113,27 @@ public class AdminRestController {
         return bandera;
 
     }
+
+
+    
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ConstraintViolationException.class)
+	ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
+		return new ResponseEntity<>("nombre del método y parametros erroneos: " + e.getMessage(),
+				HttpStatus.BAD_REQUEST);
+	}
+
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+
+		return errors;
+	}
+
 }

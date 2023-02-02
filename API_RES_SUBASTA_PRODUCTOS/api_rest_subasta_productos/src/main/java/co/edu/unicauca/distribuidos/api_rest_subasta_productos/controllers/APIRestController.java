@@ -86,7 +86,7 @@ public class APIRestController {
         return productoService.consultaOfertaProducto(codigo);
     }
     @PutMapping("/ofertar")
-    public Boolean productoNoSubastar(@RequestParam String codigo,@RequestParam Integer valor) {
+    public Boolean Ofertar(@RequestParam String codigo,@RequestParam Integer valor) {
         return productoService.nuevaOfertaProducto(codigo, valor);
     }
 }
