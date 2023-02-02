@@ -16,14 +16,14 @@ public class UsuarioServices {
     private Client objClientePeticiones;
 
     public UsuarioServices() {
-        this.endPoint = "http://localhost:5000/api/admin";
+        this.endPoint = "http://localhost:5000/api";
         this.objClientePeticiones = ClientBuilder.newClient().register(new JacksonFeature());
     }
 
     public ClienteDTO registrarCliente(ClienteDTO objClienteRegistar) {
         ClienteDTO objCliente = null;
 
-        WebTarget target = this.objClientePeticiones.target(this.endPoint);
+        WebTarget target = this.objClientePeticiones.target(this.endPoint+"/cliente");
 
         Entity<ClienteDTO> data = Entity.entity(objClienteRegistar, MediaType.APPLICATION_JSON_TYPE);
 
@@ -37,7 +37,7 @@ public class UsuarioServices {
     public AdminDTO registrarAdmin(AdminDTO objClienteRegistar) {
         AdminDTO objAdmin = null;
 
-        WebTarget target = this.objClientePeticiones.target(this.endPoint);
+        WebTarget target = this.objClientePeticiones.target(this.endPoint+"/admin");
 
         Entity<AdminDTO> data = Entity.entity(objClienteRegistar, MediaType.APPLICATION_JSON_TYPE);
 
@@ -46,6 +46,21 @@ public class UsuarioServices {
         objAdmin = objPeticion.post(data, AdminDTO.class);
 
         return objAdmin;
+    }
+
+    public Object ingresar(DatosLoginDTO datos) {
+       
+        Object objUsuario = null;
+
+        WebTarget target = this.objClientePeticiones.target(this.endPoint+"/login");
+
+        Entity<DatosLoginDTO> data = Entity.entity(datos, MediaType.APPLICATION_JSON_TYPE);
+
+        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+
+        objUsuario = objPeticion.post(data, Object.class);
+
+        return objUsuario;
     }
 
 }

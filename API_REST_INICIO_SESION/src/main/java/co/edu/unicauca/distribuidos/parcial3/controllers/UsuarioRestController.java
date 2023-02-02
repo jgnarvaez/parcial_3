@@ -40,13 +40,13 @@ import org.springframework.validation.annotation.Validated;
 @RestController
 @RequestMapping("/api")
 @Validated
-public class AdminRestController {
+public class UsuarioRestController {
     @Autowired
     private IAdminService adminService;
     @Autowired
     private IClienteService clienteService;
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Object index(@RequestBody DatosLoginDTO log) {
          Object objAdminClient = null; //crea un objeto de tipo object por que no se conoce si sera adminstrador o cliente       
         
