@@ -27,10 +27,11 @@ public class servicio5 extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabelAbrir = new javax.swing.JLabel();
         jTextFieldAbrir = new javax.swing.JTextField();
+        jButtonGuardarAbrir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabelCerrar = new javax.swing.JLabel();
         jTextFieldCerrar = new javax.swing.JTextField();
-        jButtonGuardar = new javax.swing.JButton();
+        jButtonGuardarCerrar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -43,7 +44,7 @@ public class servicio5 extends javax.swing.JPanel {
         add(jLabeltitulo, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Abrir Subasta", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Emoji", 0, 18), new java.awt.Color(51, 153, 255))); // NOI18N
@@ -55,6 +56,16 @@ public class servicio5 extends javax.swing.JPanel {
         jTextFieldAbrir.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldAbrir.setPreferredSize(new java.awt.Dimension(64, 20));
 
+        jButtonGuardarAbrir.setBackground(new java.awt.Color(0, 153, 255));
+        jButtonGuardarAbrir.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonGuardarAbrir.setText("Aplicar Cambios");
+        jButtonGuardarAbrir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGuardarAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarAbrirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -62,13 +73,15 @@ public class servicio5 extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelAbrir)
-                        .addContainerGap(294, Short.MAX_VALUE))
+                    .addComponent(jLabelAbrir)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jTextFieldAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jTextFieldAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(166, Short.MAX_VALUE)
+                .addComponent(jButtonGuardarAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,7 +90,9 @@ public class servicio5 extends javax.swing.JPanel {
                 .addComponent(jLabelAbrir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addComponent(jButtonGuardarAbrir)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2);
@@ -92,20 +107,33 @@ public class servicio5 extends javax.swing.JPanel {
         jTextFieldCerrar.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldCerrar.setPreferredSize(new java.awt.Dimension(64, 20));
 
+        jButtonGuardarCerrar.setBackground(new java.awt.Color(0, 153, 255));
+        jButtonGuardarCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonGuardarCerrar.setText("Aplicar Cambios");
+        jButtonGuardarCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGuardarCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabelCerrar)
-                        .addContainerGap(288, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelCerrar, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jTextFieldCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jTextFieldCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(157, 157, 157)
+                        .addComponent(jButtonGuardarCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,44 +142,72 @@ public class servicio5 extends javax.swing.JPanel {
                 .addComponent(jLabelCerrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addComponent(jButtonGuardarCerrar)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        jButtonGuardar.setBackground(new java.awt.Color(0, 153, 255));
-        jButtonGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonGuardar.setText("Aplicar Cambios");
-        jButtonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardarActionPerformed(evt);
-            }
-        });
-        add(jButtonGuardar, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+    private void jButtonGuardarAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarAbrirActionPerformed
         try {
-            if (!jTextFieldAbrir.getText().equals("")) {
-                ProductoServices objProductoServices = new ProductoServices();
-                Boolean repuesta = objProductoServices.cambiarProductoASubastados(jTextFieldAbrir.getText());
-                if (repuesta) {
-                    JOptionPane.showMessageDialog(null, "PRODUCTO SUBASTADO CON EXITO!!!");
-                }else{
-                    JOptionPane.showMessageDialog(null, "NO SE HA PODIDO SUBASTAR!!!");
+            if (!jTextFieldAbrir.getText().equals(jTextFieldCerrar.getText())) {
+                if (!jTextFieldAbrir.getText().equals("")) {
+                    ProductoServices objProductoServices = new ProductoServices();
+                    ProductoDTO objProducto = null;
+                    objProducto = objProductoServices.consultarProducto(jTextFieldAbrir.getText());
+                    if (objProducto != null) {
+                        Boolean repuesta = objProductoServices.cambiarProductoASubastados(objProducto, jTextFieldAbrir.getText());
+                        if (repuesta) {
+                            JOptionPane.showMessageDialog(null, "PRODUCTO SUBASTADO CON EXITO!!!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN SUBASTADOS!!!");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA ABRIR SU SUBASTA!!!");
+                    }
                 }
+            }else{
+                JOptionPane.showMessageDialog(null, "LOS CAMPOS NO PUEDEN TENER EL MISMO CODIGO!!!");
             }
         } catch (Exception NullException) {
             JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!");
         }
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
+    }//GEN-LAST:event_jButtonGuardarAbrirActionPerformed
+
+    private void jButtonGuardarCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarCerrarActionPerformed
+        try {
+            if (!jTextFieldAbrir.getText().equals(jTextFieldCerrar.getText())) {
+                if (!jTextFieldCerrar.getText().equals("")) {
+                    ProductoServices objProductoServices = new ProductoServices();
+                    ProductoDTO objProducto = null;
+                    objProducto = objProductoServices.consultarProducto(jTextFieldCerrar.getText());
+                    if (objProducto != null) {
+                        Boolean repuesta = objProductoServices.cambiarProductoNOSubastados(objProducto, jTextFieldCerrar.getText());
+                        if (repuesta) {
+                            JOptionPane.showMessageDialog(null, "SUBASTA QUITADA CON EXITO!!!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN NO SUBASTADOS!!!");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA CERRAR SU SUBASTA!!!");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "LOS CAMPOS NO PUEDEN TENER EL MISMO CODIGO!!!");
+            }
+        } catch (Exception NullException) {
+            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!");
+        }
+    }//GEN-LAST:event_jButtonGuardarCerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonGuardarAbrir;
+    private javax.swing.JButton jButtonGuardarCerrar;
     private javax.swing.JLabel jLabelAbrir;
     private javax.swing.JLabel jLabelCerrar;
     private javax.swing.JLabel jLabeltitulo;

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package co.edu.unicauca.distribuidos.interface_usuarios.views;
 
 import co.edu.unicauca.distribuidos.interface_usuarios.models.ProductoDTO;
@@ -11,10 +7,6 @@ import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author mario
- */
 public class servicio7 extends javax.swing.JPanel {
 
     /**

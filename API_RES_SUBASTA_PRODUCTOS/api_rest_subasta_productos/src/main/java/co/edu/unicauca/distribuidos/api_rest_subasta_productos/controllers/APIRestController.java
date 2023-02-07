@@ -71,22 +71,25 @@ public class APIRestController {
         return bandera;
 
     }
-    
+
     @PutMapping("/productoSubastar/{codigo}")
-    public Boolean productoSubastar(@PathVariable String codigo) {
+    public Boolean productoSubastar(@RequestBody ProductoDTO producto, @PathVariable String codigo) {
         return productoService.abrirSubastaProducto(codigo);
     }
-    
+
     @PutMapping("/productoNoSubastar/{codigo}")
-    public Boolean productoNoSubastar(@PathVariable String codigo) {
+    public Boolean productoNoSubastar(@RequestBody ProductoDTO producto, @PathVariable String codigo) {
         return productoService.cerrarSubastaProducto(codigo);
     }
+
     @GetMapping("/oferta/{codigo}")
     public Integer obtenerOferta(@PathVariable String codigo) {
         return productoService.consultaOfertaProducto(codigo);
     }
-    @PutMapping("/ofertar")
-    public Boolean Ofertar(@RequestParam String codigo,@RequestParam Integer valor) {
+
+    @PutMapping("/ofertar/{codigo}/{valor}")
+    public Boolean Ofertar(@RequestBody ProductoDTO producto, @PathVariable String codigo,
+            @PathVariable Integer valor) {
         return productoService.nuevaOfertaProducto(codigo, valor);
     }
 }

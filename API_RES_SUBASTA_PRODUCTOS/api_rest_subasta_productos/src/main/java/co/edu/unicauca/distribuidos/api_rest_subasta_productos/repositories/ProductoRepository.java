@@ -12,87 +12,89 @@ import co.edu.unicauca.distribuidos.api_rest_subasta_productos.models.ProductoEn
 public class ProductoRepository {
     private ArrayList<ProductoEntity> listaDeProductosSubastados;
     private ArrayList<ProductoEntity> listaDeProductosNOSubastados;
-    Hashtable<String, Integer> ofetasProductos = new Hashtable<String, Integer>();
- 
+    Hashtable<String, Integer> ofertasProductos = new Hashtable<String, Integer>();
 
     public ProductoRepository() {
         this.listaDeProductosSubastados = new ArrayList<ProductoEntity>();
         this.listaDeProductosNOSubastados = new ArrayList<ProductoEntity>();
         cargarProductos();
-        
+
     }
-//////////////////////////////////
-/////Funciones para OFETAS
-//////////////////////////////////
+
+    //////////////////////////////////
+    ///// Funciones para OFERTAS
+    //////////////////////////////////
     public Integer getOferta(String codigo) {
         System.out.println("Invocando consultar oferta de producto ");
-        if (ofetasProductos.containsKey(codigo)){
+        if (ofertasProductos.containsKey(codigo)) {
             System.out.println("si hay oferta ");
-            return ofetasProductos.get(codigo);
+            return ofertasProductos.get(codigo);
         }
         System.out.println("no hay oferta ");
         return 0;
     }
-    public boolean NuevaOferta(String codigo,Integer oferta) {
+
+    public boolean NuevaOferta(String codigo, Integer oferta) {
         System.out.println("Invocando a dar oferta de producto ");
-        boolean bandera=false;
-        if(this.findByCodigoSubastados(codigo)!=null){//< busca el codigo en los productos subastados
+        boolean bandera = false;
+        if (this.findByCodigoSubastados(codigo) != null) {// < busca el codigo en los productos subastados
             return this.modificarOferta(codigo, oferta);
         }
         System.out.println("producto no ofrecido en la subasta");
         return bandera;
     }
-    private boolean modificarOferta(String codigo,Integer oferta) {
-        boolean bandera=false;
-        if (ofetasProductos.containsKey(codigo)){
+
+    private boolean modificarOferta(String codigo, Integer oferta) {
+        boolean bandera = false;
+        if (ofertasProductos.containsKey(codigo)) {
             System.out.println("el prodcto ya posee oferta(s)");
-            if(oferta>ofetasProductos.get(codigo)){
+            if (oferta > ofertasProductos.get(codigo)) {
                 System.out.println("Se ha creado la oferta");
-                ofetasProductos.put(codigo, oferta);
-                System.out.println(ofetasProductos.get(codigo));
-                System.out.println(ofetasProductos.containsKey(codigo));
-                bandera=true;
+                ofertasProductos.put(codigo, oferta);
+                System.out.println(ofertasProductos.get(codigo));
+                System.out.println(ofertasProductos.containsKey(codigo));
+                bandera = true;
             }
-        }else{
+        } else {
             System.out.println("Se ha creado la oferta");
-            ofetasProductos.put(codigo, oferta);
-            //System.out.println(ofetasProductos.get(codigo));
-            //System.out.println(ofetasProductos.containsKey(codigo));
-            bandera=true;
+            ofertasProductos.put(codigo, oferta);
+            // System.out.println(ofetasProductos.get(codigo));
+            // System.out.println(ofetasProductos.containsKey(codigo));
+            bandera = true;
         }
         return bandera;
     }
 
-
-
-//////////////////////////////////
-/////Funciones para cambiar elementos subastados
-//////////////////////////////////
+    //////////////////////////////////
+    ///// Funciones para cambiar elementos subastados
+    //////////////////////////////////
     public boolean abrirSubastaProducto(String codigo) {
         System.out.println("Invocando a subastar el producto ");
-        ProductoEntity objProducto = this.findByCodigo(codigo);///< crea un objeto que almacena el elemento temporalmente
-        boolean bandera=false;
-        if(this.deleteNoSubastados(codigo)){///<intentamos elminimar de los no subastados
+        ProductoEntity objProducto = this.findByCodigo(codigo);/// < crea un objeto que almacena el elemento
+                                                               /// temporalmente
+        boolean bandera = false;
+        if (this.deleteNoSubastados(codigo)) {/// <intentamos elminimar de los no subastados
             this.saveSubastados(objProducto);
-            bandera=true;///<se ha agregado a elementos subastados
+            bandera = true;/// <se ha agregado a elementos subastados
         }
         return bandera;
     }
-    
+
     public boolean cerrarSubastaProducto(String codigo) {
         System.out.println("Invocando a quitar de la subasta el producto ");
-        ProductoEntity objProducto = this.findByCodigo(codigo);///<crea un objeto que almacena el elemento temporalmente
-        boolean bandera=false;
-        if(this.deleteSubatados(codigo)){///<intentamos elminimar de los  subastados
+        ProductoEntity objProducto = this.findByCodigo(codigo);/// <crea un objeto que almacena el elemento
+                                                               /// temporalmente
+        boolean bandera = false;
+        if (this.deleteSubatados(codigo)) {/// <intentamos elminimar de los subastados
             this.saveNoSubastados(objProducto);
-            bandera=true;////< se ha agregado a elementos no subastados
+            bandera = true;//// < se ha agregado a elementos no subastados
         }
-        return bandera;        
+        return bandera;
     }
 
-//////////////////////////////////
-/////Funciones para hallar un  elemento
-//////////////////////////////////
+    //////////////////////////////////
+    ///// Funciones para hallar un elemento
+    //////////////////////////////////
     public List<ProductoEntity> findAll() {
         System.out.println("Invocando a listarproductos");
         ArrayList<ProductoEntity> listaProductos = new ArrayList<ProductoEntity>();
@@ -100,14 +102,17 @@ public class ProductoRepository {
         listaProductos.addAll(listaDeProductosNOSubastados);
         return listaProductos;
     }
+
     public List<ProductoEntity> findSubastados() {
         System.out.println("Invocando a listarsubastados");
         return this.listaDeProductosSubastados;
     }
+
     public List<ProductoEntity> findNOSubastados() {
         System.out.println("Invocando a listarnosubastados");
         return this.listaDeProductosNOSubastados;
     }
+
     public ProductoEntity findByCodigo(String codigo) {
         System.out.println("Invocando a consultar un producto");
         ProductoEntity objProducto = null;
@@ -124,6 +129,7 @@ public class ProductoRepository {
         }
         return objProducto;
     }
+
     public ProductoEntity findByCodigoSubastados(String codigo) {
         System.out.println("Invocando a consultar un producto Subastado");
         ProductoEntity objProducto = null;
@@ -134,7 +140,9 @@ public class ProductoRepository {
             }
         }
         return objProducto;
-    }public ProductoEntity findByCodigoNoSubastados(String codigo) {
+    }
+
+    public ProductoEntity findByCodigoNoSubastados(String codigo) {
         System.out.println("Invocando a consultar un producto NO Subastado");
         ProductoEntity objProducto = null;
         for (ProductoEntity producto : listaDeProductosNOSubastados) {
@@ -146,13 +154,14 @@ public class ProductoRepository {
         return objProducto;
     }
 
-//////////////////////////////////
-/////Funciones para almacenar un  elemento
-//////////////////////////////////
+    //////////////////////////////////
+    ///// Funciones para almacenar un elemento
+    //////////////////////////////////
     public ProductoEntity save(ProductoEntity producto) {
         System.out.println("Invocando a almacenar producto");
         return this.saveNoSubastados(producto);
     }
+
     public ProductoEntity saveSubastados(ProductoEntity producto) {
         System.out.println("Invocando a almacenar producto en Subastados");
         ProductoEntity objProducto = null;
@@ -162,6 +171,7 @@ public class ProductoRepository {
 
         return objProducto;
     }
+
     public ProductoEntity saveNoSubastados(ProductoEntity producto) {
         System.out.println("Invocando a almacenar producto en No Subastados");
         ProductoEntity objProducto = null;
@@ -171,19 +181,20 @@ public class ProductoRepository {
         return objProducto;
     }
 
-//////////////////////////////////
-/////Funciones para actualizar un  elemento
-//////////////////////////////////
+    //////////////////////////////////
+    ///// Funciones para actualizar un elemento
+    //////////////////////////////////
     public ProductoEntity update(String codigo, ProductoEntity producto) {
         System.out.println("Invocando a actualizar un producto");
         ProductoEntity objProducto = null;
-        objProducto=this.updateNoSubastados(codigo, producto);
-        if (objProducto==null){
+        objProducto = this.updateNoSubastados(codigo, producto);
+        if (objProducto == null) {
             System.out.println("  No se encontro en productos no subastados");
-            objProducto=this.updateSubastados(codigo, producto);
+            objProducto = this.updateSubastados(codigo, producto);
         }
         return objProducto;
     }
+
     public ProductoEntity updateSubastados(String codigo, ProductoEntity producto) {
         System.out.println("Invocando a actualizar un producto Subastado");
         ProductoEntity objProducto = null;
@@ -196,6 +207,7 @@ public class ProductoRepository {
         }
         return objProducto;
     }
+
     public ProductoEntity updateNoSubastados(String codigo, ProductoEntity producto) {
         System.out.println("Invocando a actualizar un producto No Subastado");
         ProductoEntity objProducto = null;
@@ -210,19 +222,20 @@ public class ProductoRepository {
         return objProducto;
     }
 
-//////////////////////////////////
-/////Funciones para eliminar un  elemento
-//////////////////////////////////
+    //////////////////////////////////
+    ///// Funciones para eliminar un elemento
+    //////////////////////////////////
     public boolean delete(String codigo) {
         System.out.println("Invocando a eliminar un producto");
         boolean bandera = false;
-        bandera=this.deleteNoSubastados(codigo);
-        if(!bandera){
+        bandera = this.deleteNoSubastados(codigo);
+        if (!bandera) {
             System.out.println("  No se encontro en productos no subastados");
-            bandera=this.deleteSubatados(codigo);
+            bandera = this.deleteSubatados(codigo);
         }
         return bandera;
     }
+
     public boolean deleteSubatados(String codigo) {
         System.out.println("Invocando a eliminar un producto Subastado");
         boolean bandera = false;
@@ -233,8 +246,10 @@ public class ProductoRepository {
                 break;
             }
         }
-        return bandera;    }
-     public boolean deleteNoSubastados(String codigo) {
+        return bandera;
+    }
+
+    public boolean deleteNoSubastados(String codigo) {
         System.out.println("Invocando a eliminar un producto No Subastado");
         boolean bandera = false;
         for (int i = 0; i < this.listaDeProductosNOSubastados.size(); i++) {
@@ -247,9 +262,9 @@ public class ProductoRepository {
         return bandera;
     }
 
-//////////////////////////////////
-/////Datos quemados
-//////////////////////////////////
+    //////////////////////////////////
+    ///// Datos quemados
+    //////////////////////////////////
     private void cargarProductos() {
         ProductoEntity objProducto1 = new ProductoEntity("AAA111", "Monalisa", 500000000);
         this.listaDeProductosNOSubastados.add(objProducto1);

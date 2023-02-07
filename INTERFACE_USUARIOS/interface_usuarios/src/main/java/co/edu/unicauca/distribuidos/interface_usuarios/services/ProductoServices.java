@@ -47,14 +47,30 @@ public class ProductoServices {
 	return listaProductos;
     }
     
-    public Boolean cambiarProductoASubastados(String codigoProducto){
+    public Boolean cambiarProductoASubastados(ProductoDTO objProducto, String codigoProducto){
         Boolean respuesta=null;	
 		
 	WebTarget target = this.objProductoPeticiones.target(this.endPoint+"/productoSubastar/"+codigoProducto);	  
 		
+        Entity<ProductoDTO> data = Entity.entity(objProducto, MediaType.APPLICATION_JSON_TYPE);
+        
         Builder objPeticion=target.request(MediaType.APPLICATION_JSON_TYPE);
 	    
-	respuesta = objPeticion.put(null,Boolean.class);		
+	respuesta = objPeticion.put(data, Boolean.class);		
+		
+        return respuesta;
+    }
+    
+    public Boolean cambiarProductoNOSubastados(ProductoDTO objProducto, String codigoProducto){
+        Boolean respuesta=null;	
+		
+	WebTarget target = this.objProductoPeticiones.target(this.endPoint+"/productoNoSubastar/"+codigoProducto);	  
+		
+        Entity<ProductoDTO> data = Entity.entity(objProducto, MediaType.APPLICATION_JSON_TYPE);
+        
+        Builder objPeticion=target.request(MediaType.APPLICATION_JSON_TYPE);
+	    
+	respuesta = objPeticion.put(data, Boolean.class);		
 		
         return respuesta;
     }
@@ -81,5 +97,19 @@ public class ProductoServices {
         objProducto = objPeticion.get(ProductoDTO.class);
 
         return objProducto;
+    }
+    
+    public Boolean ofrecerOferta(ProductoDTO objProducto, String codigo, Integer valor){
+        Boolean respuesta=null;	
+		
+	WebTarget target = this.objProductoPeticiones.target(this.endPoint+"/ofertar/"+codigo+"/"+valor);	  
+		
+        Entity<ProductoDTO> data = Entity.entity(objProducto, MediaType.APPLICATION_JSON_TYPE);
+        
+        Builder objPeticion=target.request(MediaType.APPLICATION_JSON_TYPE);
+	    
+	respuesta = objPeticion.put(data, Boolean.class);		
+		
+        return respuesta;
     }
 }
