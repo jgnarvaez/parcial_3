@@ -17,7 +17,8 @@ public class hiloAlterno extends Thread {
     public void run(){
         while(true){
             try {
-                TimeUnit.SECONDS.sleep(2);
+                Thread.sleep(4000);
+                //TimeUnit.SECONDS.sleep(4);
                 ProductoServices objProductoServices = new ProductoServices();
                 List<ProductoDTO> objProductos = null;
 
@@ -36,7 +37,7 @@ public class hiloAlterno extends Thread {
             } catch (Exception NullException) {
                jTextAreaPublicaProductos.setText(jTextAreaPublicaProductos.getText()+"No se ha podido consultar el servidor\n");
                 try {
-                    TimeUnit.SECONDS.sleep(4);
+                    Thread.sleep(4000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(hiloAlterno.class.getName()).log(Level.SEVERE, null, ex);
                 }               
