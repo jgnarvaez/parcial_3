@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package co.edu.unicauca.distribuidos.interface_usuarios.views;
 
-/**
- *
- * @author mario
- */
+import co.edu.unicauca.distribuidos.interface_usuarios.models.ProductoDTO;
+import co.edu.unicauca.distribuidos.interface_usuarios.services.ProductoServices;
+import javax.swing.JOptionPane;
+
 public class servicio3 extends javax.swing.JPanel {
 
     /**
@@ -133,7 +129,14 @@ public class servicio3 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-        // TODO add your handling code here:
+        try {
+            ProductoServices objProductoServices = new ProductoServices();
+            ProductoDTO objProducto = new ProductoDTO(jTextFieldCodigo.getText(), jTextFieldNombre.getText(), Integer.valueOf(jTextFieldValor.getText()));
+            ProductoDTO objProductoRegistrado = objProductoServices.registrarProducto(objProducto);
+            JOptionPane.showMessageDialog(null, "PRODUCTO REGISTRADO CON EXITO!!!");
+        } catch (Exception NullException) {
+            JOptionPane.showMessageDialog(null, "PRODUCTO NO REGISTRADO!!!");
+        }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
 

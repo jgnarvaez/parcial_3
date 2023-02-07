@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package co.edu.unicauca.distribuidos.interface_usuarios.views;
 
-/**
- *
- * @author mario
- */
+import co.edu.unicauca.distribuidos.interface_usuarios.models.ProductoDTO;
+import co.edu.unicauca.distribuidos.interface_usuarios.services.ProductoServices;
+import javax.swing.JOptionPane;
+
 public class servicio5 extends javax.swing.JPanel {
 
     /**
@@ -138,7 +134,19 @@ public class servicio5 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (!jTextFieldAbrir.getText().equals("")) {
+                ProductoServices objProductoServices = new ProductoServices();
+                Boolean repuesta = objProductoServices.cambiarProductoASubastados(jTextFieldAbrir.getText());
+                if (repuesta) {
+                    JOptionPane.showMessageDialog(null, "PRODUCTO SUBASTADO CON EXITO!!!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "NO SE HA PODIDO SUBASTAR!!!");
+                }
+            }
+        } catch (Exception NullException) {
+            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!");
+        }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
 

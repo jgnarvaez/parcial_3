@@ -4,6 +4,13 @@
  */
 package co.edu.unicauca.distribuidos.interface_usuarios.views;
 
+import co.edu.unicauca.distribuidos.interface_usuarios.models.ProductoDTO;
+import co.edu.unicauca.distribuidos.interface_usuarios.services.ProductoServices;
+import java.util.List;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author mario
@@ -33,7 +40,8 @@ public class servicio7 extends javax.swing.JPanel {
         jTextFieldID = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaProducto = new javax.swing.JTextArea();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -101,40 +109,43 @@ public class servicio7 extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
-        jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        jTextAreaProducto.setColumns(20);
+        jTextAreaProducto.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaProducto);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-
+        try {
+            ProductoServices objProductoServices = new ProductoServices();
+            ProductoDTO objProducto = null;
+            objProducto = objProductoServices.consultarProducto(jTextFieldID.getText());
+            String cadenaProducto = "";
+            
+            cadenaProducto = cadenaProducto + "Codigo: "+ objProducto.getCodigo() + "\nNombre: " +objProducto.getNombre() + "\nValor Inicial: "+ objProducto.getValorInicial();
+            jTextAreaProducto.setText(cadenaProducto);
+        } catch (Exception NullException) {
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!");
+        }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -144,7 +155,8 @@ public class servicio7 extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaProducto;
     private javax.swing.JTextField jTextFieldID;
     // End of variables declaration//GEN-END:variables
 }

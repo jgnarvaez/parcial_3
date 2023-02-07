@@ -4,6 +4,11 @@
  */
 package co.edu.unicauca.distribuidos.interface_usuarios.views;
 
+import co.edu.unicauca.distribuidos.interface_usuarios.models.ProductoDTO;
+import co.edu.unicauca.distribuidos.interface_usuarios.services.ProductoServices;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mario
@@ -30,7 +35,11 @@ public class servicio6 extends javax.swing.JPanel {
         jButtonConsultar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaNoSubastados = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaSubastados = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -59,15 +68,24 @@ public class servicio6 extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos No Subastados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Emoji", 0, 18), new java.awt.Color(51, 153, 255))); // NOI18N
 
+        jTextAreaNoSubastados.setColumns(20);
+        jTextAreaNoSubastados.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaNoSubastados);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 213, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel2);
@@ -75,15 +93,24 @@ public class servicio6 extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos Subastados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Emoji", 0, 18), new java.awt.Color(51, 153, 255))); // NOI18N
 
+        jTextAreaSubastados.setColumns(20);
+        jTextAreaSubastados.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaSubastados);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 213, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel3);
@@ -92,7 +119,25 @@ public class servicio6 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-        // TODO add your handling code here:
+        try {
+            ProductoServices objProductoServices = new ProductoServices();
+            List<ProductoDTO> objProductos = null;
+            objProductos = objProductoServices.listarProductosAOfertar();
+            String cadenaProductos = "";
+            for (ProductoDTO producto : objProductos) {
+                cadenaProductos = cadenaProductos + "Codigo: "+ producto.getCodigo() +", Nombre: " +producto.getNombre() + ", Valor Inicial: "+ producto.getValorInicial() + "\n";
+            }
+            jTextAreaNoSubastados.setText(cadenaProductos);
+            
+            objProductos = objProductoServices.listarProductosSubastados();
+            String cadenaProductos2 = "";
+            for (ProductoDTO producto : objProductos) {
+                cadenaProductos2 = cadenaProductos2 + "Codigo: "+ producto.getCodigo() +", Nombre: " +producto.getNombre() + ", Valor Inicial: "+ producto.getValorInicial() + "\n";
+            }
+            jTextAreaSubastados.setText(cadenaProductos2);
+        } catch (Exception NullException) {
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!");
+        }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
 
@@ -102,5 +147,9 @@ public class servicio6 extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextAreaNoSubastados;
+    private javax.swing.JTextArea jTextAreaSubastados;
     // End of variables declaration//GEN-END:variables
 }
