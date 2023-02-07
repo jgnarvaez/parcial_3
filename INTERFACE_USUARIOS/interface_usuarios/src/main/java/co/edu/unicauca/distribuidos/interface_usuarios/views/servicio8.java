@@ -4,10 +4,7 @@
  */
 package co.edu.unicauca.distribuidos.interface_usuarios.views;
 
-/**
- *
- * @author mario
- */
+
 public class servicio8 extends javax.swing.JPanel {
 
     /**
@@ -27,8 +24,11 @@ public class servicio8 extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabeltitulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(734, 280));
+        setMinimumSize(new java.awt.Dimension(734, 280));
         setLayout(new java.awt.BorderLayout());
 
         jLabeltitulo.setBackground(new java.awt.Color(255, 255, 255));
@@ -37,10 +37,26 @@ public class servicio8 extends javax.swing.JPanel {
         jLabeltitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabeltitulo.setText("OFERTAS ACTUALES");
         add(jLabeltitulo, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 734, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 248, Short.MAX_VALUE)
+        );
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabeltitulo;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

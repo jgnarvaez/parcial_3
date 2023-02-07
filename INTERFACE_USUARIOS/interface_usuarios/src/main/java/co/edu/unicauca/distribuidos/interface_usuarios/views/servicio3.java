@@ -67,6 +67,11 @@ public class servicio3 extends javax.swing.JPanel {
         jTextFieldValor.setBackground(new java.awt.Color(247, 247, 247));
         jTextFieldValor.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldValor.setPreferredSize(new java.awt.Dimension(64, 20));
+        jTextFieldValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldValorKeyTyped(evt);
+            }
+        });
 
         jButtonRegistrar.setBackground(new java.awt.Color(0, 153, 255));
         jButtonRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,10 +139,20 @@ public class servicio3 extends javax.swing.JPanel {
             ProductoDTO objProducto = new ProductoDTO(jTextFieldCodigo.getText(), jTextFieldNombre.getText(), Integer.valueOf(jTextFieldValor.getText()));
             ProductoDTO objProductoRegistrado = objProductoServices.registrarProducto(objProducto);
             JOptionPane.showMessageDialog(null, "PRODUCTO REGISTRADO CON EXITO!!!");
+            
+            jTextFieldCodigo.setText("");
+            jTextFieldNombre.setText("");
+            jTextFieldValor.setText("");
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "PRODUCTO NO REGISTRADO!!!");
+            JOptionPane.showMessageDialog(null, "PRODUCTO NO REGISTRADO!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
+    private void jTextFieldValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldValorKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_jTextFieldValorKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -15,7 +15,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ASDA"/>
+            <Property name="text" type="java.lang.String" value="|"/>
             <Property name="toolTipText" type="java.lang.String" value="fffffffffffffff"/>
           </Properties>
           <Events>

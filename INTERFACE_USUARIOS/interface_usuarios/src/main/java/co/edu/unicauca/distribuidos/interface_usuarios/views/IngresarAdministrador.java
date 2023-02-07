@@ -8,10 +8,6 @@ import co.edu.unicauca.distribuidos.interface_usuarios.models.AdminDTO;
 import co.edu.unicauca.distribuidos.interface_usuarios.services.UsuarioServices;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author JOSE
- */
 public class IngresarAdministrador extends javax.swing.JFrame {
 
     /**
@@ -163,11 +159,15 @@ public class IngresarAdministrador extends javax.swing.JFrame {
             this.setVisible(false);
             ventanaLogin.setVisible(true);
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "ADMINISTRADOR NO REGISTRADO!!!");
+            JOptionPane.showMessageDialog(null, "ADMINISTRADOR NO REGISTRADO!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
             Login ventanaLogin = new Login();
             this.setVisible(false);
             ventanaLogin.setVisible(true);
         }
+        jTextFieldApellido.setText("");
+        jTextFieldContrasenia.setText("");
+        jTextFieldLogin.setText("");
+        jTextFieldNombre.setText("");
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     /**

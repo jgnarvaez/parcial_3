@@ -93,7 +93,7 @@ public class servicio4 extends javax.swing.JPanel {
             }
             jTextArea1.setText(cadenaProductos);
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 

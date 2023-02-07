@@ -8,10 +8,7 @@ import co.edu.unicauca.distribuidos.interface_usuarios.models.ProductoDTO;
 import co.edu.unicauca.distribuidos.interface_usuarios.services.ProductoServices;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author mario
- */
+
 public class servicio9 extends javax.swing.JPanel {
 
     /**
@@ -65,11 +62,19 @@ public class servicio9 extends javax.swing.JPanel {
 
         jLabelID.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabelID.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelID.setText("Id Producto");
+        jLabelID.setText("Codigo Producto");
 
         jTextFieldValor.setBackground(new java.awt.Color(247, 247, 247));
         jTextFieldValor.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldValor.setPreferredSize(new java.awt.Dimension(64, 20));
+        jTextFieldValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldValorKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldValorKeyTyped(evt);
+            }
+        });
 
         jLabelValor.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabelValor.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,15 +83,25 @@ public class servicio9 extends javax.swing.JPanel {
         jTextFieldID.setBackground(new java.awt.Color(247, 247, 247));
         jTextFieldID.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldID.setPreferredSize(new java.awt.Dimension(64, 20));
+        jTextFieldID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldIDKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabelID)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabelID))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelValor))
@@ -95,11 +110,6 @@ public class servicio9 extends javax.swing.JPanel {
                 .addGap(218, 218, 218)
                 .addComponent(jButtonRealizarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(36, 36, 36)
-                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(344, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,15 +119,12 @@ public class servicio9 extends javax.swing.JPanel {
                     .addComponent(jLabelID)
                     .addComponent(jLabelValor))
                 .addGap(18, 18, 18)
-                .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jButtonRealizarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(75, 75, 75)
-                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(98, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -125,7 +132,7 @@ public class servicio9 extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap(64, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
         );
@@ -152,22 +159,44 @@ public class servicio9 extends javax.swing.JPanel {
                             Boolean repuesta = objProductoServices.ofrecerOferta(objProducto, jTextFieldID.getText(), Integer.valueOf(jTextFieldValor.getText()));
                             if (repuesta) {
                                 JOptionPane.showMessageDialog(null, "OFERTA REALIZADA CON EXITO!!!");
+                                
+                                  jTextFieldID.setText("");
+                                  jTextFieldValor.setText("");
                             } else {
-                                JOptionPane.showMessageDialog(null, "OFERTA NO REALIZADA, ASEGURESE QUE SU OFERTA SEA MAYOR A LA OFERTA ACTUAL!!!");
+                                JOptionPane.showMessageDialog(null, "OFERTA NO REALIZADA, ASEGURESE QUE SU OFERTA SEA MAYOR A LA OFERTA ACTUAL!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
+                                  jTextFieldValor.setText("");
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA REALIZAR OFERTA!!!");
+                            JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA REALIZAR OFERTA!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null, "LA OFERTA REALIZADA DEBE SER MAYOR QUE LA OFERTA INICIAL!!!");
+                        JOptionPane.showMessageDialog(null, "LA OFERTA REALIZADA DEBE SER MAYOR QUE LA OFERTA INICIAL!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "LOS CAMPOS SON OBLIGATORIOS!!!");
+                    JOptionPane.showMessageDialog(null, "LOS CAMPOS SON OBLIGATORIOS!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                 }
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!");
+            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonRealizarOfertaActionPerformed
+
+    private void jTextFieldIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIDKeyTyped
+        
+    }//GEN-LAST:event_jTextFieldIDKeyTyped
+
+    private void jTextFieldValorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldValorKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldValorKeyPressed
+
+    private void jTextFieldValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldValorKeyTyped
+       
+        char c=evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_jTextFieldValorKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -50,11 +50,16 @@ public class servicio7 extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabelID.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        jLabelID.setText("Id Produto");
+        jLabelID.setText("Codigo Produto");
 
         jTextFieldID.setBackground(new java.awt.Color(247, 247, 247));
         jTextFieldID.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldID.setPreferredSize(new java.awt.Dimension(64, 20));
+        jTextFieldID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldIDKeyTyped(evt);
+            }
+        });
 
         jButtonConsultar.setBackground(new java.awt.Color(0, 153, 255));
         jButtonConsultar.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,9 +140,13 @@ public class servicio7 extends javax.swing.JPanel {
             cadenaProducto = cadenaProducto + "Codigo: "+ objProducto.getCodigo() + "\nNombre: " +objProducto.getNombre() + "\nValor Inicial: "+ objProducto.getValorInicial();
             jTextAreaProducto.setText(cadenaProducto);
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jTextFieldIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIDKeyTyped
+       
+    }//GEN-LAST:event_jTextFieldIDKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -50,11 +50,16 @@ public class servicio5 extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Abrir Subasta", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Emoji", 0, 18), new java.awt.Color(51, 153, 255))); // NOI18N
 
         jLabelAbrir.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        jLabelAbrir.setText("Id Produto");
+        jLabelAbrir.setText("Codigo Produto");
 
         jTextFieldAbrir.setBackground(new java.awt.Color(247, 247, 247));
         jTextFieldAbrir.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldAbrir.setPreferredSize(new java.awt.Dimension(64, 20));
+        jTextFieldAbrir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldAbrirKeyTyped(evt);
+            }
+        });
 
         jButtonGuardarAbrir.setBackground(new java.awt.Color(0, 153, 255));
         jButtonGuardarAbrir.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,11 +106,16 @@ public class servicio5 extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cerrar Subasta", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Emoji", 0, 18), new java.awt.Color(51, 153, 255))); // NOI18N
 
         jLabelCerrar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        jLabelCerrar.setText("Id Producto");
+        jLabelCerrar.setText("Codigo Producto");
 
         jTextFieldCerrar.setBackground(new java.awt.Color(247, 247, 247));
         jTextFieldCerrar.setForeground(new java.awt.Color(51, 153, 255));
         jTextFieldCerrar.setPreferredSize(new java.awt.Dimension(64, 20));
+        jTextFieldCerrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCerrarKeyTyped(evt);
+            }
+        });
 
         jButtonGuardarCerrar.setBackground(new java.awt.Color(0, 153, 255));
         jButtonGuardarCerrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,18 +173,25 @@ public class servicio5 extends javax.swing.JPanel {
                         Boolean repuesta = objProductoServices.cambiarProductoASubastados(objProducto, jTextFieldAbrir.getText());
                         if (repuesta) {
                             JOptionPane.showMessageDialog(null, "PRODUCTO SUBASTADO CON EXITO!!!");
+                            
+                            jTextFieldAbrir.setText("");
                         } else {
-                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN SUBASTADOS!!!");
+                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN SUBASTADOS!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA ABRIR SU SUBASTA!!!");
+                        JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA ABRIR SU SUBASTA!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                     }
+                }else{ JOptionPane.showMessageDialog(null, "NO HAY NIGUN CODIGO EN EL CAMPO SOLICITADO",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS NO PUEDEN TENER EL MISMO CODIGO!!!");
+                JOptionPane.showMessageDialog(null, "LOS CAMPOS NO PUEDEN TENER EL MISMO CODIGO!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!");
+            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonGuardarAbrirActionPerformed
 
@@ -189,20 +206,35 @@ public class servicio5 extends javax.swing.JPanel {
                         Boolean repuesta = objProductoServices.cambiarProductoNOSubastados(objProducto, jTextFieldCerrar.getText());
                         if (repuesta) {
                             JOptionPane.showMessageDialog(null, "SUBASTA QUITADA CON EXITO!!!");
+                            
+                            jTextFieldCerrar.setText("");
                         } else {
-                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN NO SUBASTADOS!!!");
+                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN NO SUBASTADOS!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA CERRAR SU SUBASTA!!!");
+                        JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA CERRAR SU SUBASTA!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                     }
+                }else{ JOptionPane.showMessageDialog(null, "NO HAY NIGUN CODIGO EN EL CAMPO SOLICITADO",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS NO PUEDEN TENER EL MISMO CODIGO!!!");
+                JOptionPane.showMessageDialog(null, "LOS CAMPOS NO PUEDEN TENER EL MISMO CODIGO!!!",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!");
+            JOptionPane.showMessageDialog(null, "NO FUE POSIBLE APLICAR CAMBIOS!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonGuardarCerrarActionPerformed
+
+    private void jTextFieldAbrirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAbrirKeyTyped
+
+    }//GEN-LAST:event_jTextFieldAbrirKeyTyped
+
+    private void jTextFieldCerrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCerrarKeyTyped
+     
+    }//GEN-LAST:event_jTextFieldCerrarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

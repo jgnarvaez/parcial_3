@@ -7,10 +7,7 @@ package co.edu.unicauca.distribuidos.interface_usuarios.views;
 import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author mario
- */
+
 public class HomeApp extends javax.swing.JFrame {
     static public String tipoUserHome;
     /**
@@ -80,7 +77,7 @@ public class HomeApp extends javax.swing.JFrame {
         jMenuBar1.setFocusCycleRoot(true);
         jMenuBar1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
 
-        jMenu3.setText("ASDA");
+        jMenu3.setText("|");
         jMenu3.setToolTipText("fffffffffffffff");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -102,7 +99,7 @@ public class HomeApp extends javax.swing.JFrame {
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "dsfsdfadsfasd");
+        
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
@@ -258,7 +255,7 @@ public class HomeApp extends javax.swing.JFrame {
             });
             jMenuBar1.add(MenuListarProductosOfertar);
 
-            MenuAbrirCerrarSubasta.setText("AbreSubasta");
+            MenuAbrirCerrarSubasta.setText("Abre/CierraSubasta");
              MenuAbrirCerrarSubasta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AbrirCerrarSubastaMouseClicked(evt);

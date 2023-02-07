@@ -9,10 +9,7 @@ import co.edu.unicauca.distribuidos.interface_usuarios.services.ProductoServices
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author mario
- */
+
 public class servicio6 extends javax.swing.JPanel {
 
     /**
@@ -136,7 +133,7 @@ public class servicio6 extends javax.swing.JPanel {
             }
             jTextAreaSubastados.setText(cadenaProductos2);
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CONSULTAR!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
