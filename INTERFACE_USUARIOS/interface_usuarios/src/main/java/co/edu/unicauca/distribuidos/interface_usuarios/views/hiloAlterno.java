@@ -34,9 +34,9 @@ public class hiloAlterno extends Thread {
                     jTextAreaPublicaProductos.setText("NO EXISTEN SUBASTAS ABIERTAS...");
                 }
             } catch (Exception NullException) {
-               jTextAreaPublicaProductos.setText(jTextAreaPublicaProductos.getText()+"mi hilo");
+               jTextAreaPublicaProductos.setText(jTextAreaPublicaProductos.getText()+"No se ha podido consultar el servidor\n");
                 try {
-                    TimeUnit.SECONDS.sleep(2);
+                    TimeUnit.SECONDS.sleep(4);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(hiloAlterno.class.getName()).log(Level.SEVERE, null, ex);
                 }               

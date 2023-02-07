@@ -40,7 +40,6 @@ public class HomeApp extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(741, 402));
         setMinimumSize(new java.awt.Dimension(741, 402));
         setResizable(false);
 
@@ -268,7 +267,8 @@ public class HomeApp extends javax.swing.JFrame {
             
         }
         if(tipoUserHome.equals("cliente")){
-            
+            servicio8 s8 =new servicio8();
+            s8.setVisible(true);
             
             JMenu MenuListProductoSubastadosNoSubastados = new javax.swing.JMenu();
 
