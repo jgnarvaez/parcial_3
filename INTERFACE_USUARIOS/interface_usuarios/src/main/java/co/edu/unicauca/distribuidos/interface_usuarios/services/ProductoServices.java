@@ -112,4 +112,16 @@ public class ProductoServices {
 		
         return respuesta;
     }
+    
+    public Integer consultarOfertaProducto(String codigo) {
+        Integer ofertaActual = null;
+
+        WebTarget target = this.objProductoPeticiones.target(this.endPoint + "/oferta/" + codigo);
+
+        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+
+        ofertaActual = objPeticion.get(Integer.class);
+
+        return ofertaActual;
+    }
 }

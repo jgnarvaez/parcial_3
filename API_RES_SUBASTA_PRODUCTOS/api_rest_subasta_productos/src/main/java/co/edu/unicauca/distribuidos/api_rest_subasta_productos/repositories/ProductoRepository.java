@@ -266,13 +266,17 @@ public class ProductoRepository {
     ///// Datos quemados
     //////////////////////////////////
     private void cargarProductos() {
-        ProductoEntity objProducto1 = new ProductoEntity("AAA111", "Monalisa", 500000000);
-        this.listaDeProductosNOSubastados.add(objProducto1);
-        ProductoEntity objProducto2 = new ProductoEntity("BBB222", "Lampara", 2000000);
-        this.listaDeProductosSubastados.add(objProducto2);
-        ProductoEntity objProducto3 = new ProductoEntity("CCC333", "Portatil", 4500000);
-        this.listaDeProductosSubastados.add(objProducto3);
-        ProductoEntity objProducto4 = new ProductoEntity("DDD444", "Mansion", 200000000);
-        this.listaDeProductosNOSubastados.add(objProducto4);
+        // ProductoEntity objProducto1 = new ProductoEntity("AAA111", "Monalisa",
+        // 500000000);
+        // this.listaDeProductosNOSubastados.add(objProducto1);
+        // ProductoEntity objProducto2 = new ProductoEntity("BBB222", "Lampara",
+        // 2000000);
+        // this.listaDeProductosSubastados.add(objProducto2);
+        // ProductoEntity objProducto3 = new ProductoEntity("CCC333", "Portatil",
+        // 4500000);
+        // this.listaDeProductosSubastados.add(objProducto3);
+        // ProductoEntity objProducto4 = new ProductoEntity("DDD444", "Mansion",
+        // 200000000);
+        // this.listaDeProductosNOSubastados.add(objProducto4);
     }
 }

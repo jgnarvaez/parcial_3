@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.edu.unicauca.distribuidos.interface_usuarios.views;
 
 import co.edu.unicauca.distribuidos.interface_usuarios.models.ProductoDTO;
@@ -25,7 +21,6 @@ public class hiloAlterno extends Thread {
                 ProductoServices objProductoServices = new ProductoServices();
                 List<ProductoDTO> objProductos = null;
 
-
                 objProductos = objProductoServices.listarProductosSubastados();
                 String cadenaProductos2 = "";
                 for (ProductoDTO producto : objProductos) {
@@ -35,7 +30,9 @@ public class hiloAlterno extends Thread {
                             ", Valor Inicial: "+ producto.getValorInicial() + "--> OFERTA"+ofertaActual+"\n";
                 }
                 jTextAreaPublicaProductos.setText(cadenaProductos2);
-                
+                if (cadenaProductos2.equals("")) {
+                    jTextAreaPublicaProductos.setText("NO EXISTEN SUBASTAS ABIERTAS...");
+                }
             } catch (Exception NullException) {
                jTextAreaPublicaProductos.setText(jTextAreaPublicaProductos.getText()+"mi hilo");
                 try {

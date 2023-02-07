@@ -34,6 +34,7 @@ public class HomeApp extends javax.swing.JFrame {
 
         Contenedor = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jDesktopPaneHiloAlterno = new javax.swing.JDesktopPane();
         jButtonCerrar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -55,6 +56,7 @@ public class HomeApp extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("entraste");
         Contenedor.add(jLabel1, java.awt.BorderLayout.CENTER);
+        Contenedor.add(jDesktopPaneHiloAlterno, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(Contenedor, java.awt.BorderLayout.CENTER);
 
@@ -224,6 +226,7 @@ public class HomeApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Contenedor;
     private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JDesktopPane jDesktopPaneHiloAlterno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
@@ -265,6 +268,8 @@ public class HomeApp extends javax.swing.JFrame {
             
         }
         if(tipoUserHome.equals("cliente")){
+            
+            
             JMenu MenuListProductoSubastadosNoSubastados = new javax.swing.JMenu();
 
             JMenu MenuConsultarProducto = new javax.swing.JMenu();
