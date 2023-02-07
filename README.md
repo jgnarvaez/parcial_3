@@ -1,4 +1,4 @@
-# parcial_3
+# parcial_3_Sistemas_Distribuidos
 
 Universidad del Cauca - Ingeniería de Sistemas - Sistemas Distribuidos
 
