@@ -7,9 +7,7 @@ import co.edu.unicauca.distribuidos.interface_usuarios.services.*;
 
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    static public String tipoUser="";
     public Login() {
         initComponents();
     }
@@ -23,62 +21,154 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         btnIngresar = new javax.swing.JButton();
         jLabelUsuario = new javax.swing.JLabel();
         jLabelContrasenia = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jTextFieldContrasenia = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButtonCreaCliento = new javax.swing.JButton();
+        jButtonCreaAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+
+        btnIngresar.setBackground(new java.awt.Color(0, 153, 255));
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("INGRESAR");
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
 
+        jLabelUsuario.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabelUsuario.setText("Usuario:");
 
+        jLabelContrasenia.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabelContrasenia.setText("Contraseña:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelContrasenia)
-                            .addComponent(jLabelUsuario))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(btnIngresar)))
-                .addContainerGap(73, Short.MAX_VALUE))
+        jTextFieldUsuario.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldUsuario.setForeground(new java.awt.Color(0, 153, 255));
+        jTextFieldUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextFieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUsuarioActionPerformed(evt);
+            }
+        });
+
+        jTextFieldContrasenia.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldContrasenia.setForeground(new java.awt.Color(0, 153, 255));
+        jTextFieldContrasenia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextFieldContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setText("Login:");
+
+        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
+
+        jButtonCreaCliento.setBackground(new java.awt.Color(249, 249, 249));
+        jButtonCreaCliento.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jButtonCreaCliento.setText("Registra Cliente");
+        jButtonCreaCliento.setBorder(null);
+        jButtonCreaCliento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCreaCliento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreaClientoActionPerformed(evt);
+            }
+        });
+
+        jButtonCreaAdmin.setBackground(new java.awt.Color(249, 249, 249));
+        jButtonCreaAdmin.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jButtonCreaAdmin.setText("Registra Administrador");
+        jButtonCreaAdmin.setBorder(null);
+        jButtonCreaAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCreaAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreaAdminActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonCreaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCreaCliento, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelUsuario)
-                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelContrasenia)
-                    .addComponent(jTextFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(btnIngresar)
-                .addGap(61, 61, 61))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCreaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jButtonCreaCliento, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
         );
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelUsuario)
+                            .addComponent(jLabelContrasenia)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldContrasenia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(131, 131, 131))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(123, 123, 123)))))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(33, 33, 33)
+                .addComponent(jLabelUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelContrasenia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -88,12 +178,45 @@ public class Login extends javax.swing.JFrame {
         try {
             UsuarioServices objAdminServices = new UsuarioServices();
             DatosLoginDTO datos=  new DatosLoginDTO(Usuario,Contrasenia);
-            Object usuarioRecuperado = objAdminServices.ingresar(datos);
-            JOptionPane.showMessageDialog(null, usuarioRecuperado.toString());
+            tipoUser = objAdminServices.ingresar(datos);
+            JOptionPane.showMessageDialog(null,tipoUser);
+            if(tipoUser.equals("")){
+                JOptionPane.showMessageDialog(null, "USUARIO NO ENCONTRADO!!!");
+                
+            }else{
+                 HomeApp principal=new HomeApp(tipoUser);
+                principal.setVisible(true);
+                this.setVisible(false);
+            }
+            
         } catch (Exception NullException) {
-            JOptionPane.showMessageDialog(null, "USUARIO NO ENCONTRADO!!!");
+            JOptionPane.showMessageDialog(null, "USUARIO NO ENCONTRADO!!!, ha ocurrido un error");
+            //desde aqui es pruebas
+                tipoUser="cliente";
+                 HomeApp principal=new HomeApp(tipoUser);
+                principal.setVisible(true);
+                this.setVisible(false);
+                
+                //Hata aqui son pruebas
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
+
+    private void jButtonCreaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreaAdminActionPerformed
+        IngresarAdministrador ventanaAdmin =  new IngresarAdministrador();
+         ventanaAdmin.setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_jButtonCreaAdminActionPerformed
+
+    private void jButtonCreaClientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreaClientoActionPerformed
+        // TODO add your handling code here:
+        IngresarCliente ventanaCliente =  new IngresarCliente();
+        ventanaCliente.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCreaClientoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,8 +255,13 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton jButtonCreaAdmin;
+    private javax.swing.JButton jButtonCreaCliento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelContrasenia;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldContrasenia;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables

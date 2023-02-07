@@ -47,7 +47,7 @@ public class UsuarioRestController {
     private IClienteService clienteService;
 
     @PostMapping("/login")
-    public Object index(@RequestBody DatosLoginDTO log) {
+    public String index(@RequestBody DatosLoginDTO log) {
          Object objAdminClient = null; //crea un objeto de tipo object por que no se conoce si sera adminstrador o cliente       
         
         objAdminClient = adminService.findByLoginPassword(log);// busca entre los administradores si no la encuentra es nulo
@@ -59,10 +59,12 @@ public class UsuarioRestController {
             ClienteDTO prue2=new ClienteDTO();
             System.out.println("es Administrador?"+  prue.getClass().equals(objAdminClient.getClass()));
             System.out.println("es cliente?"+  prue2.getClass().equals(objAdminClient.getClass()));
-            
+            if(prue.getClass().equals(objAdminClient.getClass())){return "admin";}
+            else if(prue2.getClass().equals(objAdminClient.getClass())){return "cliente";}
+
         }
         
-        return objAdminClient;
+        return "";
     }
 
     @GetMapping("/admin")

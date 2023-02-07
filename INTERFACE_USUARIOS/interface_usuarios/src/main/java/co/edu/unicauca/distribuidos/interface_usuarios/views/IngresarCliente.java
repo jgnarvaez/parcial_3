@@ -30,8 +30,7 @@ public class IngresarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -41,98 +40,107 @@ public class IngresarCliente extends javax.swing.JFrame {
         jTextFieldCorreo = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
         jTextFieldLogin = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jTextFieldContrasenia = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jButtonRegstrar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(450, 500));
+        setResizable(false);
 
-        jLabel1.setText("Nombre:");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
 
-        jLabel2.setText("Apellido:");
-
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel3.setText("Correo:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(40, 130, 38, 16);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel4.setText("Teléfono:");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(40, 210, 50, 16);
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel5.setText("Login:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(40, 280, 33, 16);
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel6.setText("Contraseña:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(40, 350, 62, 16);
 
+        jTextFieldNombre.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldNombre.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jTextFieldNombre.setForeground(new java.awt.Color(51, 153, 255));
+        jPanel1.add(jTextFieldNombre);
+        jTextFieldNombre.setBounds(60, 90, 176, 40);
+
+        jTextFieldApellido.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldApellido.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jTextFieldApellido.setForeground(new java.awt.Color(51, 153, 255));
+        jPanel1.add(jTextFieldApellido);
+        jTextFieldApellido.setBounds(250, 90, 176, 40);
+
+        jTextFieldCorreo.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldCorreo.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jTextFieldCorreo.setForeground(new java.awt.Color(51, 153, 255));
+        jPanel1.add(jTextFieldCorreo);
+        jTextFieldCorreo.setBounds(60, 150, 176, 40);
+
+        jTextFieldTelefono.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldTelefono.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jTextFieldTelefono.setForeground(new java.awt.Color(51, 153, 255));
+        jPanel1.add(jTextFieldTelefono);
+        jTextFieldTelefono.setBounds(60, 230, 176, 40);
+
+        jTextFieldLogin.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldLogin.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jTextFieldLogin.setForeground(new java.awt.Color(51, 153, 255));
+        jPanel1.add(jTextFieldLogin);
+        jTextFieldLogin.setBounds(60, 300, 176, 40);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        jLabel1.setText("Nombre:");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(40, 60, 47, 16);
+
+        jTextFieldContrasenia.setBackground(new java.awt.Color(247, 247, 247));
+        jTextFieldContrasenia.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jTextFieldContrasenia.setForeground(new java.awt.Color(51, 153, 255));
+        jPanel1.add(jTextFieldContrasenia);
+        jTextFieldContrasenia.setBounds(60, 370, 176, 40);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        jLabel2.setText("Apellido:");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(240, 60, 47, 16);
+
+        jButtonRegstrar.setBackground(new java.awt.Color(0, 153, 255));
+        jButtonRegstrar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonRegstrar.setText("REGISTRAR");
+        jButtonRegstrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegstrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegstrarActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonRegstrar);
+        jButtonRegstrar.setBounds(310, 410, 105, 37);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombre)
-                            .addComponent(jTextFieldApellido)
-                            .addComponent(jTextFieldCorreo)
-                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jButtonRegstrar)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(101, 101, 101))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonRegstrar)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel7.setText("Nuevo Cliente");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(150, 10, 154, 32);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegstrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegstrarActionPerformed
@@ -141,8 +149,14 @@ public class IngresarCliente extends javax.swing.JFrame {
             ClienteDTO objCliente = new ClienteDTO(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldCorreo.getText(),jTextFieldTelefono.getText(),jTextFieldLogin.getText(), jTextFieldContrasenia.getText());
             ClienteDTO objClienteRegistrado = objAdminServices.registrarCliente(objCliente);
             JOptionPane.showMessageDialog(null, "CLIENTE REGISTRADO CON EXITO!!!");
+            Login ventanaLogin = new Login();
+            this.setVisible(false);
+            ventanaLogin.setVisible(true);
         } catch (Exception NullException) {
             JOptionPane.showMessageDialog(null, "CLIENTE NO REGISTRADO!!!");
+            Login ventanaLogin = new Login();
+            this.setVisible(false);
+            ventanaLogin.setVisible(true);
         }
     }//GEN-LAST:event_jButtonRegstrarActionPerformed
 
@@ -189,6 +203,8 @@ public class IngresarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldContrasenia;
     private javax.swing.JTextField jTextFieldCorreo;

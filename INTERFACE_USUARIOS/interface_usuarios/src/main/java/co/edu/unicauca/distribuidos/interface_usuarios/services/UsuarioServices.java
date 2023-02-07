@@ -48,9 +48,9 @@ public class UsuarioServices {
         return objAdmin;
     }
 
-    public Object ingresar(DatosLoginDTO datos) {
+    public String ingresar(DatosLoginDTO datos) {
        
-        Object objUsuario = null;
+        String objUsuario = null;
 
         WebTarget target = this.objClientePeticiones.target(this.endPoint+"/login");
 
@@ -58,7 +58,7 @@ public class UsuarioServices {
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
 
-        objUsuario = objPeticion.post(data, Object.class);
+        objUsuario = objPeticion.post(data, String.class);
 
         return objUsuario;
     }
