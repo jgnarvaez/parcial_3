@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame {
             UsuarioServices objAdminServices = new UsuarioServices();
             DatosLoginDTO datos=  new DatosLoginDTO(Usuario,Contrasenia);
             tipoUser = objAdminServices.ingresar(datos);
-            JOptionPane.showMessageDialog(null,tipoUser);
+            //JOptionPane.showMessageDialog(null,tipoUser);
             if(tipoUser.equals("")){
                 JOptionPane.showMessageDialog(null, "USUARIO NO ENCONTRADO!!!",
                 "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);

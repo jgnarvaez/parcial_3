@@ -176,7 +176,7 @@ public class servicio5 extends javax.swing.JPanel {
                             
                             jTextFieldAbrir.setText("");
                         } else {
-                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN SUBASTADOS!!!",
+                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN SUBASTA!!!",
                 "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                         }
                     } else {
@@ -209,7 +209,7 @@ public class servicio5 extends javax.swing.JPanel {
                             
                             jTextFieldCerrar.setText("");
                         } else {
-                            JOptionPane.showMessageDialog(null, "EL PRODUCTO YA SE ENCUENTRA EN NO SUBASTADOS!!!",
+                            JOptionPane.showMessageDialog(null, "EL PRODUCTO TIENE LA SUBASTA CERRADA!!!",
                 "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                         }
                     } else {

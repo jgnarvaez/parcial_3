@@ -9,10 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author mario
- */
 public class hiloAlterno extends Thread {
     public void run(){
         while(true){
@@ -28,7 +24,7 @@ public class hiloAlterno extends Thread {
                     int ofertaActual=objProductoServices.consultarOfertaProducto(producto.getCodigo());
                     
                     cadenaProductos2 = cadenaProductos2 + "Codigo: "+ producto.getCodigo() +", Nombre: " +producto.getNombre() +
-                            ", Valor Inicial: "+ producto.getValorInicial() + "--> OFERTA"+ofertaActual+"\n";
+                            ", Valor Inicial: "+ producto.getValorInicial() + " --> OFERTA = $"+ofertaActual+"\n";
                 }
                 jTextAreaPublicaProductos.setText(cadenaProductos2);
                 if (cadenaProductos2.equals("")) {

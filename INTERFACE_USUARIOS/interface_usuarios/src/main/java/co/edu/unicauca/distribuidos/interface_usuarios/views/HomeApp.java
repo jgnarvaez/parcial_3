@@ -37,7 +37,6 @@ public class HomeApp extends javax.swing.JFrame {
         jDesktopPaneHiloAlterno = new javax.swing.JDesktopPane();
         jButtonCerrar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(741, 402));
@@ -77,37 +76,11 @@ public class HomeApp extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(249, 249, 249));
         jMenuBar1.setFocusCycleRoot(true);
         jMenuBar1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
-
-        jMenu3.setText("|");
-        jMenu3.setToolTipText("fffffffffffffff");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
-            }
-        });
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu3);
-
         setJMenuBar(jMenuBar1);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jMenu3ActionPerformed
-
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        // TODO add your handling code here:
-             JOptionPane.showMessageDialog(null, "hola");
-    
-    }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
         // TODO add your handling code here:
@@ -170,11 +143,9 @@ public class HomeApp extends javax.swing.JFrame {
       private void MenuProductosSubastadosOfertasMouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
               //JOptionPane.showMessageDialog(null, "cambiando el panel");
-             servicio8 registro= new servicio8();
-             Contenedor.removeAll();
-             Contenedor.add(registro);
-             registro.setVisible(true);
-             pack();
+             servicio8 s8 =new servicio8();
+                s8.setVisible(true);
+             
     
     }  
        private void MenuHacerOfertaMouseClicked(java.awt.event.MouseEvent evt) {                                    
@@ -227,7 +198,6 @@ public class HomeApp extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCerrar;
     private javax.swing.JDesktopPane jDesktopPaneHiloAlterno;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
@@ -249,7 +219,7 @@ public class HomeApp extends javax.swing.JFrame {
             });
             jMenuBar1.add(MenuRegistraProducto);
 
-            MenuListarProductosOfertar.setText("ListarProductoO");
+            MenuListarProductosOfertar.setText("ProductosAOfertar");
               MenuListarProductosOfertar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListarProductoMouseClicked(evt);
@@ -267,8 +237,8 @@ public class HomeApp extends javax.swing.JFrame {
             
         }
         if(tipoUserHome.equals("cliente")){
-            servicio8 s8 =new servicio8();
-            s8.setVisible(true);
+            //servicio8 s8 =new servicio8();
+            //s8.setVisible(true);
             
             JMenu MenuListProductoSubastadosNoSubastados = new javax.swing.JMenu();
 

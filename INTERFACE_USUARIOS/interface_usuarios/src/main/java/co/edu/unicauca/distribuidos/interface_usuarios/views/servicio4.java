@@ -36,7 +36,7 @@ public class servicio4 extends javax.swing.JPanel {
         jLabeltitulo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         jLabeltitulo.setForeground(new java.awt.Color(51, 153, 255));
         jLabeltitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabeltitulo.setText("Lista Productos NO Ofertados");
+        jLabeltitulo.setText("Lista de Productos NO Subastados");
         add(jLabeltitulo, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

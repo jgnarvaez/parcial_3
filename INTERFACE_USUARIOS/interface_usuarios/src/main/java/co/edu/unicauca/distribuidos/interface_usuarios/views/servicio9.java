@@ -149,9 +149,8 @@ public class servicio9 extends javax.swing.JPanel {
                     ProductoServices objProductoServices = new ProductoServices();
                     ProductoDTO objProducto = null;
                     objProducto = objProductoServices.consultarProducto(jTextFieldID.getText());
-                    
-                    if (objProducto.getValorInicial()<Integer.valueOf(jTextFieldValor.getText())) {
-                        if (objProducto != null) {
+                    if (objProducto != null) {
+                        if (objProducto.getValorInicial()<Integer.valueOf(jTextFieldValor.getText())) {
                             Boolean repuesta = objProductoServices.ofrecerOferta(objProducto, jTextFieldID.getText(), Integer.valueOf(jTextFieldValor.getText()));
                             if (repuesta) {
                                 JOptionPane.showMessageDialog(null, "OFERTA REALIZADA CON EXITO!!!");
@@ -159,16 +158,16 @@ public class servicio9 extends javax.swing.JPanel {
                                   jTextFieldID.setText("");
                                   jTextFieldValor.setText("");
                             } else {
-                                JOptionPane.showMessageDialog(null, "OFERTA NO REALIZADA, ASEGURESE QUE SU OFERTA SEA MAYOR A LA OFERTA ACTUAL!!!",
+                                JOptionPane.showMessageDialog(null, "OFERTA NO REALIZADA!!!",
                 "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                                   jTextFieldValor.setText("");
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA REALIZAR OFERTA!!!",
+                            JOptionPane.showMessageDialog(null, "LA OFERTA REALIZADA DEBE SER MAYOR QUE EL VALOR INICIAL DEL PRODUCTO!!!",
                 "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null, "LA OFERTA REALIZADA DEBE SER MAYOR QUE LA OFERTA INICIAL!!!",
+                        JOptionPane.showMessageDialog(null, "NO SE HA ENCONTRADO EL PRODUCTO PARA REALIZAR OFERTA!!!",
                 "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
                     }
                 }else{

@@ -22,9 +22,9 @@ public interface IProductoService {
 
     public boolean cerrarSubastaProducto(String codigo);
 
-    public boolean nuevaOfertaProducto(String codigo,Integer oferta);
+    public boolean nuevaOfertaProducto(String codigo, Integer oferta);
 
     public Integer consultaOfertaProducto(String codigo);
 
-
+    public ProductoDTO findByCodigoSubastado(String codigo);
 }

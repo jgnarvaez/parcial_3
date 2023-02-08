@@ -78,7 +78,7 @@ public class ProductoServiceImpl implements IProductoService {
     @Override
     public boolean abrirSubastaProducto(String codigo) {
         return this.servicioAccesoBaseDatos.abrirSubastaProducto(codigo);
-       
+
     }
 
     @Override
@@ -87,13 +87,23 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
-    public boolean nuevaOfertaProducto(String codigo, Integer oferta) {        
-        return  this.servicioAccesoBaseDatos.NuevaOferta(codigo, oferta);
+    public boolean nuevaOfertaProducto(String codigo, Integer oferta) {
+        return this.servicioAccesoBaseDatos.NuevaOferta(codigo, oferta);
     }
 
     @Override
     public Integer consultaOfertaProducto(String codigo) {
         return this.servicioAccesoBaseDatos.getOferta(codigo);
+    }
+
+    @Override
+    public ProductoDTO findByCodigoSubastado(String codigo) {
+        ProductoEntity objProductoEntity = this.servicioAccesoBaseDatos.findByCodigoSubastado(codigo);
+        if (objProductoEntity == null) {
+            return null;
+        }
+        ProductoDTO productoDTO = this.modelMapper.map(objProductoEntity, ProductoDTO.class);
+        return productoDTO;
     }
 
 }
