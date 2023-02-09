@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.distribuidos.api_rest_subasta_productos.services.IProductoService;
@@ -93,4 +92,10 @@ public class APIRestController {
         return productoService.nuevaOfertaProducto(codigo, valor);
     }
 
+    @GetMapping("/subastados/{codigo}")
+    public ProductoDTO showSubastados(@PathVariable String codigo) {
+        ProductoDTO objProducto = null;
+        objProducto = productoService.findByCodigoSubastado(codigo);
+        return objProducto;
+    }
 }

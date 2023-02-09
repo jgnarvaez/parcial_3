@@ -28,10 +28,10 @@ public class ProductoRepository {
     public Integer getOferta(String codigo) {
         System.out.println("Invocando consultar oferta de producto ");
         if (ofertasProductos.containsKey(codigo)) {
-            System.out.println("si hay oferta ");
+            // System.out.println("si hay oferta ");
             return ofertasProductos.get(codigo);
         }
-        System.out.println("no hay oferta ");
+        // System.out.println("no hay oferta ");
         return 0;
     }
 
@@ -49,6 +49,7 @@ public class ProductoRepository {
         boolean bandera = false;
         if (ofertasProductos.containsKey(codigo)) {
             System.out.println("el prodcto ya posee oferta(s)");
+            // validacion de la oferta realizada debe ser mayor que la actual...
             if (oferta > ofertasProductos.get(codigo)) {
                 System.out.println("Se ha creado la oferta");
                 ofertasProductos.put(codigo, oferta);

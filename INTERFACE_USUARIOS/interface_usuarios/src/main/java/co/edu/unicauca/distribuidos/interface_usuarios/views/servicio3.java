@@ -136,13 +136,18 @@ public class servicio3 extends javax.swing.JPanel {
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         try {
             ProductoServices objProductoServices = new ProductoServices();
-            ProductoDTO objProducto = new ProductoDTO(jTextFieldCodigo.getText(), jTextFieldNombre.getText(), Integer.valueOf(jTextFieldValor.getText()));
-            ProductoDTO objProductoRegistrado = objProductoServices.registrarProducto(objProducto);
-            JOptionPane.showMessageDialog(null, "PRODUCTO REGISTRADO CON EXITO!!!");
+            if (objProductoServices.consultarProducto(jTextFieldCodigo.getText())==null) {
+                ProductoDTO objProducto = new ProductoDTO(jTextFieldCodigo.getText(), jTextFieldNombre.getText(), Integer.valueOf(jTextFieldValor.getText()));
+                ProductoDTO objProductoRegistrado = objProductoServices.registrarProducto(objProducto);
+                JOptionPane.showMessageDialog(null, "PRODUCTO REGISTRADO CON EXITO!!!");
             
-            jTextFieldCodigo.setText("");
-            jTextFieldNombre.setText("");
-            jTextFieldValor.setText("");
+                jTextFieldCodigo.setText("");
+                jTextFieldNombre.setText("");
+                jTextFieldValor.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "EL CODIGO DEL PRODUCTO YA EXISTE!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+            }
+            
         } catch (Exception NullException) {
             JOptionPane.showMessageDialog(null, "PRODUCTO NO REGISTRADO!!!","ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }

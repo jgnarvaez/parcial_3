@@ -148,7 +148,7 @@ public class servicio9 extends javax.swing.JPanel {
                 if (!jTextFieldValor.getText().equals("") && !jTextFieldID.getText().equals("")) {
                     ProductoServices objProductoServices = new ProductoServices();
                     ProductoDTO objProducto = null;
-                    objProducto = objProductoServices.consultarProducto(jTextFieldID.getText());
+                    objProducto = objProductoServices.consultarProductoSubastado(jTextFieldID.getText());
                     if (objProducto != null) {
                         if (objProducto.getValorInicial()<Integer.valueOf(jTextFieldValor.getText())) {
                             Boolean repuesta = objProductoServices.ofrecerOferta(objProducto, jTextFieldID.getText(), Integer.valueOf(jTextFieldValor.getText()));

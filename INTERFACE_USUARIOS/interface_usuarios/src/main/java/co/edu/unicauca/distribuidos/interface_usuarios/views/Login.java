@@ -193,12 +193,11 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception NullException) {
             JOptionPane.showMessageDialog(null, "USUARIO NO ENCONTRADO!!!: ha ocurrido un error con el servidor",
                     "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
-            //desde aqui es pruebas
-                tipoUser="cliente";
-                 HomeApp principal=new HomeApp(tipoUser);
-                principal.setVisible(true);
-                this.setVisible(false);
-                
+                //desde aqui es pruebas
+                //tipoUser="cliente";
+                //HomeApp principal=new HomeApp(tipoUser);
+                //principal.setVisible(true);
+                //this.setVisible(false);
                 //Hata aqui son pruebas
         }
     }//GEN-LAST:event_btnIngresarActionPerformed

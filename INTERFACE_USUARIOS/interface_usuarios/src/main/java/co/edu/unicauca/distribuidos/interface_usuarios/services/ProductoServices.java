@@ -124,4 +124,16 @@ public class ProductoServices {
 
         return ofertaActual;
     }
+    
+    public ProductoDTO consultarProductoSubastado(String codigo) {
+        ProductoDTO objProducto = null;
+
+        WebTarget target = this.objProductoPeticiones.target(this.endPoint + "/subastados/" + codigo);
+
+        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+
+        objProducto = objPeticion.get(ProductoDTO.class);
+
+        return objProducto;
+    }
 }

@@ -13,8 +13,6 @@ public class hiloAlterno extends Thread {
     public void run(){
         while(true){
             try {
-                Thread.sleep(4000);
-                //TimeUnit.SECONDS.sleep(4);
                 ProductoServices objProductoServices = new ProductoServices();
                 List<ProductoDTO> objProductos = null;
 
@@ -30,6 +28,7 @@ public class hiloAlterno extends Thread {
                 if (cadenaProductos2.equals("")) {
                     jTextAreaPublicaProductos.setText("NO EXISTEN SUBASTAS ABIERTAS...");
                 }
+                Thread.sleep(4000);
             } catch (Exception NullException) {
                jTextAreaPublicaProductos.setText(jTextAreaPublicaProductos.getText()+"No se ha podido consultar el servidor\n");
                 try {
